@@ -9,15 +9,19 @@
 
     <div>
       <h1 class="titulo">Algumas Categorias</h1>
-      <home-categorias :categorias="categorias"></home-categorias>
+      <v-list>
+        <v-list-item v-for="categoria in categorias">
+          <app-card :tipo-simples="true" :categoria="categoria"> </app-card>
+        </v-list-item>
+      </v-list>
     </div>
   </section>
 </template>
 
 <script setup>
 import ReceitaAleatoria from "@/components/receitas/ReceitaAleatoria.vue";
-import HomeCategorias from "@/components/receitas/HomeCategorias.vue";
-import _receitas from "../services/_receitas.js";
+import _receitas from "@/services/_receitas.js";
+import AppCard from "@/components/AppCard.vue";
 
 import { ref, onMounted } from "vue";
 

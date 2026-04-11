@@ -5,22 +5,20 @@
 
   <v-list v-else class="lista-categorias">
     <v-list-item v-for="categoria in categorias" :key="categoria.idCategory">
-      <categorias-card :categoria="categoria"></categorias-card>
+      <app-card :categoria="categoria"></app-card>
     </v-list-item>
   </v-list>
 </template>
 
 <script setup>
-import CategoriasCard from "@/components/categorias-page/CategoriasCard.vue";
 import { ref, onMounted } from "vue";
 import _receitas from "@/services/_receitas.js";
+import AppCard from "@/components/AppCard.vue";
 
 const categorias = ref([]);
 
 onMounted(async () => {
   categorias.value = await _receitas.listarCategorias();
-
-  console.log(categorias.value);
 });
 </script>
 
