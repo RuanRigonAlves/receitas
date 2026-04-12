@@ -55,6 +55,13 @@ declare module 'vue-router/auto-routes' {
       { Id: ParamValue<false> },
       | never
     >,
+    '/receitas/[Nome]': RouteRecordInfo<
+      '/receitas/[Nome]',
+      '/receitas/:Nome',
+      { Nome: ParamValue<true> },
+      { Nome: ParamValue<false> },
+      | never
+    >,
   }
 
   /**
@@ -89,6 +96,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/receita/[Id].vue': {
       routes:
         | '/receita/[Id]'
+      views:
+        | never
+    }
+    'src/pages/receitas/[Nome].vue': {
+      routes:
+        | '/receitas/[Nome]'
       views:
         | never
     }

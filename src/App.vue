@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <side-bar></side-bar>
+      <app-toolbar></app-toolbar>
 
       <v-container>
         <router-view />
@@ -11,5 +11,5 @@
 </template>
 
 <script setup>
-import SideBar from "@/components/side-bar/SideBar.vue";
+import AppToolbar from "./components/AppToolbar.vue";
 </script>

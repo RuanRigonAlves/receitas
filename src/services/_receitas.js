@@ -53,6 +53,23 @@ const _receitas = {
         .catch((erro) => reject(erro));
     });
   },
+
+  buscarReceitaNome(nome) {
+    return new Promise((resolve, reject) => {
+      apiReceitas
+        .get(`/search.php?s=${nome}`)
+        .then((response) => {
+          const receitas = response.data.meals;
+
+          if (receitas) {
+            receitas.ingredients = convertIngToArray(receitas);
+          }
+
+          resolve(receitas);
+        })
+        .catch((erro) => reject(erro));
+    });
+  },
 };
 
 export default _receitas;

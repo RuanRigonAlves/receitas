@@ -23,11 +23,19 @@
 
 <script setup>
 import _receitas from "@/services/_receitas.js";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 const receitas = ref(null);
+
+watchEffect(async () => {
+  const tipo = route.params.Categoria;
+
+  if (!tipo) return;
+
+  receitas.value = await _receitas.buscarCategorias(tipo);
+});
 
 onMounted(async () => {
   receitas.value = await _receitas.buscarCategorias(route.params.Categoria);
