@@ -3,13 +3,14 @@
     <v-main>
       <app-toolbar></app-toolbar>
 
-      <v-container>
-        <router-view />
-      </v-container>
+      <router-view />
+
+      <app-footer></app-footer>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
 import AppToolbar from "./components/AppToolbar.vue";
+import AppFooter from "./components/AppFooter.vue";
 </script>

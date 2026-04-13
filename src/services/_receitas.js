@@ -70,6 +70,19 @@ const _receitas = {
         .catch((erro) => reject(erro));
     });
   },
+
+  buscarReceitasPorPais(pais) {
+    return new Promise((resolve, reject) => {
+      apiReceitas
+        .get(`/filter.php?a=${pais}`)
+        .then((response) => {
+          const receitas = response.data.meals;
+
+          resolve(receitas);
+        })
+        .catch((erro) => reject(erro));
+    });
+  },
 };
 
 export default _receitas;
