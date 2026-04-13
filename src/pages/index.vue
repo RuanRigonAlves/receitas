@@ -1,46 +1,41 @@
 <template>
-  <section class="home-secao">
-    <div>
-      <h1 class="titulo">Receita Aleatoria</h1>
-      <receita-aleatoria :receita="receitaAleatoria"></receita-aleatoria>
-    </div>
+  <app-carousel :dados="receitasPais" v-if="receitasPais" variant="principal">
+    <template v-slot:default="{ item }">
+      <app-card-principal :item="item" variant="carousel"> </app-card-principal>
+    </template>
+  </app-carousel>
 
-    <v-divider thickness="2"></v-divider>
+  <v-container fluid class="mt-8">
+    <v-card-title>Receitas Canadense</v-card-title>
+    <app-carousel
+      :dados="receitasPaisDois"
+      v-if="receitasPaisDois"
+      variant="secundaria"
+    >
+      <template v-slot:default="{ item }">
+        <app-card-avatar :item="item"></app-card-avatar>
+      </template>
+    </app-carousel>
+  </v-container>
 
-    <div>
-      <h1 class="titulo">Algumas Categorias</h1>
-      <v-list>
-        <v-list-item v-for="categoria in categorias">
-          <app-card :tipo-simples="true" :categoria="categoria"> </app-card>
-        </v-list-item>
-      </v-list>
-    </div>
-  </section>
+  <receita-destaque :receita="receitaAleatoria"> </receita-destaque>
 </template>
 
 <script setup>
-import ReceitaAleatoria from "@/components/receitas/ReceitaAleatoria.vue";
+import AppCarousel from "@/components/AppCarousel.vue";
 import _receitas from "@/services/_receitas.js";
-import AppCard from "@/components/AppCard.vue";
-
-import { ref, onMounted } from "vue";
+import AppCardPrincipal from "@/components/AppCardPrincipal.vue";
+import AppCardAvatar from "@/components/AppCardAvatar.vue";
+import ReceitaDestaque from "@/components/ReceitaDestaque.vue";
 
 const receitaAleatoria = ref([]);
+const receitasPais = ref([]);
+const receitasPaisDois = ref([]);
 const categorias = ref([]);
 
 onMounted(async () => {
   receitaAleatoria.value = await _receitas.buscarReceitaAleatoria();
-
-  categorias.value = await _receitas.listarCategorias();
+  receitasPais.value = await _receitas.buscarReceitasPorPais("mexican");
+  receitasPaisDois.value = await _receitas.buscarReceitasPorPais("canadian");
 });
 </script>
-
-<style scoped>
-.titulo {
-  font-size: 20pt;
-}
-
-.home-secao div {
-  margin-bottom: 50pt;
-}
-</style>

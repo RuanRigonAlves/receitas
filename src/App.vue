@@ -1,15 +1,16 @@
 <template>
   <v-app>
     <v-main>
-      <side-bar></side-bar>
+      <app-toolbar></app-toolbar>
 
-      <v-container>
-        <router-view />
-      </v-container>
+      <router-view />
+
+      <app-footer></app-footer>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import SideBar from "@/components/side-bar/SideBar.vue";
+import AppToolbar from "./components/AppToolbar.vue";
+import AppFooter from "./components/AppFooter.vue";
 </script>
