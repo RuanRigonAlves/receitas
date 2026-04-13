@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid="">
     <v-row>
       <v-col
         cols="12"
@@ -10,8 +10,10 @@
         v-for="receita in receitas"
       >
         <app-card-principal
+          class="text-white"
           :item="receita"
           variant="lista"
+          :rota="'/receita/'"
         ></app-card-principal>
       </v-col>
     </v-row>

@@ -5,10 +5,20 @@
       cols="12"
       class="d-flex flex-column justify-space-evenly pt-2"
     >
-      <v-card-title>{{ props.receita.strMeal }}</v-card-title>
-      <p class="pl-3">{{ props.receita.strInstructions }}</p>
+      <v-card-title>
+        <b class="text-textprimary">
+          {{ props.receita.strMeal }}
+        </b>
+      </v-card-title>
+      <p class="pl-3 text-ptext">
+        {{ props.receita.strInstructions }}
+      </p>
       <div class="pl-3 pb-3">
-        <v-btn class="px-8" :to="`/receita/${props.receita.idMeal}`" rounded>
+        <v-btn
+          class="px-8 bg-primary"
+          :to="`/receita/${props.receita.idMeal}`"
+          rounded
+        >
           Conhecer mais sobre a receita
         </v-btn>
       </div>
@@ -20,6 +30,7 @@
         height="400px"
         width="100%"
         cover
+        rounded="lg"
       ></v-img>
     </v-col>
   </v-row>

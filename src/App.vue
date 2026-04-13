@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <v-main>
-      <app-toolbar></app-toolbar>
+    <v-main class="bg-bgprimary">
+      <app-toolbar class="bg-bgsecondary"></app-toolbar>
 
       <router-view />
-
-      <app-footer></app-footer>
     </v-main>
+
+    <app-footer class="bg-bgsecondary"></app-footer>
   </v-app>
 </template>
 

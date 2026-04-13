@@ -17,7 +17,6 @@
       <!-- menu -->
       <v-col cols="6">
         <div class="teleport-search-field d-flex justify-center"></div>
-
         <teleport defer to=".teleport-menus" :disabled="!mobile">
           <div v-if="mobile" class="d-flex justify-center align-center pa-0">
             <v-menu>
@@ -27,7 +26,7 @@
                 </v-btn>
               </template>
 
-              <v-list>
+              <v-list class="bg-bgprimary text-ptext">
                 <v-list-item
                   v-for="(item, index) in itensMenu"
                   :key="index"
@@ -112,6 +111,7 @@ const itensMenu = [
   { nome: "sobremesas", url: "/categorias/dessert" },
   { nome: "vegano", url: "/categorias/vegan" },
   { nome: "peixes", url: "/categorias/seafood" },
+  { nome: "categorias", url: "/categorias" },
 ];
 
 const search = ref("");
