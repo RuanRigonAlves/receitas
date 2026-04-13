@@ -2,14 +2,18 @@
   <v-card
     :height="variant === 'carousel' ? '400px' : '200px'"
     :width="variant === 'carousel' ? '600px' : '350px'"
-    :to="`/receita/${item.idMeal}`"
+    :to="rota + (item.idMeal || item.strCategory)"
     rounded="lg"
     :class="['card-hover', variant]"
   >
-    <v-img :src="item.strMealThumb" class="img-zoom d-flex align-end" cover>
+    <v-img
+      :src="item.strMealThumb || item.strCategoryThumb"
+      class="img-zoom d-flex align-end"
+      cover
+    >
       <span class="d-flex mb-10 pl-5 title">
         <b>
-          {{ item.strMeal }}
+          {{ item.strMeal || item.strCategory }}
         </b>
       </span>
     </v-img>
@@ -21,6 +25,7 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   item: Object,
+  rota: String,
   variant: {
     default: "principal",
   },

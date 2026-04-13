@@ -12,7 +12,9 @@
     </div>
 
     <v-card-text class="" style="font-size: 17px">
-      {{ item.strMeal.toLowerCase() }}
+      <b>
+        {{ item.strMeal.toLowerCase() }}
+      </b>
     </v-card-text>
   </v-card>
 </template>

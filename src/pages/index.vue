@@ -1,24 +1,35 @@
 <template>
   <app-carousel :dados="receitasPais" v-if="receitasPais" variant="principal">
     <template v-slot:default="{ item }">
-      <app-card-principal :item="item" variant="carousel"> </app-card-principal>
+      <app-card-principal
+        :item="item"
+        variant="carousel"
+        :rota="'/receita/'"
+        class="text-white"
+      >
+      </app-card-principal>
     </template>
   </app-carousel>
 
   <v-container fluid class="mt-8">
-    <v-card-title>Receitas Canadense</v-card-title>
+    <v-card-title class="text-textprimary">Receitas Canadense</v-card-title>
     <app-carousel
       :dados="receitasPaisDois"
       v-if="receitasPaisDois"
       variant="secundaria"
     >
       <template v-slot:default="{ item }">
-        <app-card-avatar :item="item"></app-card-avatar>
+        <app-card-avatar
+          :item="item"
+          class="text-primary"
+          elevation="0"
+        ></app-card-avatar>
       </template>
     </app-carousel>
   </v-container>
 
-  <receita-destaque :receita="receitaAleatoria"> </receita-destaque>
+  <receita-destaque :receita="receitaAleatoria" class="px-6 rounded">
+  </receita-destaque>
 </template>
 
 <script setup>
